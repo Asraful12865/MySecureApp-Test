@@ -25,15 +25,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.13'
-
       - name: Extract project
         shell: bash
         run: |
-          if [ ! -f app/build.gradle ]; then
-            unzip -q MySecureApp-source.zip -d .
-          fi
+          unzip -q -o MySecureApp-GitHub-ready.zip -d extracted
+          unzip -q -o extracted/MySecureApp-source.zip -d .
           test -f app/build.gradle
-
       - name: Prepare Android SDK
         shell: bash
         run: |
